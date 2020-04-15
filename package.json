@@ -1,0 +1,80 @@
+{
+  "name": "typescript-dependency-lint",
+  "version": "0.0.0-development",
+  "description": "Internal dependency graph linter for typescript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "bin": {
+    "typescript-dependency-lint": "./dist/index.js"
+  },
+  "files": [
+    "/dist",
+    "package-lock.js"
+  ],
+  "scripts": {
+    "check": "if echo \"$(node --version)\" | grep -q \"$(cat .nvmrc)\"; then echo \"Node version correct\"; else echo \"Node version does not match that in .nvmrc\" && exit 1; fi",
+    "build:cleanbefore": "rm -rf dist",
+    "build:lint": "tslint -c tslint.json -p tsconfig.lint.json",
+    "build:node": "tsc",
+    "build": "npm run check && npm run build:cleanbefore && npm run build:node && npm run build:lint",
+    "prepare": "NODE_ENV=production npm run build",
+    "lint-fix": "tslint --fix -c tslint.json -p tsconfig.lint.json",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "commander": "^5.0.0",
+    "node-glob": "^1.2.0",
+    "ow": "^0.17.0",
+    "tsconfig-paths": "^3.9.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/node": "^12.7.2",
+    "husky": "^3.0.4",
+    "jblew-tslint-config": "^1.1.0",
+    "semantic-release": "^15.13.21",
+    "ts-node": "8.8.2",
+    "tslint": "6.1.1",
+    "typescript": "3.8.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        0
+      ],
+      "scope-case": [
+        0
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "release": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jblew/typescript-dependency-lint"
+  },
+  "keywords": [
+    "firebase",
+    "firebase-functions",
+    "rate-limiter"
+  ],
+  "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com> (https://jedrzej.lewandowski.doctor/)",
+  "contributors": [
+    "Jędrzej Lewandowski <jedrzejblew@gmail.com> (https://jedrzej.lewandowski.doctor/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jblew/typescript-dependency-lint/issues"
+  }
+}
