@@ -1,6 +1,7 @@
 // tslint:disable no-console
 import * as commander from 'commander'
 
+import { analyzeDependencies } from './analyze'
 import { parseConfig } from './parseConfig'
 
 // tslint:disable no-var-requires
