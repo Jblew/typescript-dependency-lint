@@ -6,8 +6,16 @@ Dependency linter for typescript
 
 ```bash
 $ typescript-dependency-lint
+Usage: typescript-dependency-lint [options] [command]
 
-  Usage: typescript-dependency-lint [json-config] [glob pattern]
+Options:
+  --version              output the version number
+  --config [json]        Config in escaped JSON format. See README for reference
+  -h, --help             display help for command
+
+Commands:
+  analyze [globPattern]
+  help [command]         display help for command
 ```
 
 ```typescript
@@ -15,6 +23,16 @@ interface Config {
   ignore: string[] // glob pattern array
   tsconfigPath: string
 }
+```
+
+### Example
+
+```bash
+$ ts-node src/index.ts \
+  --config "{\"tsconfigPath\": \"./tsconfig.json\",\"ignore\": [\"**/*.spec.ts\"]}" \
+  analyze \
+  "src/**/*.@(ts|vue)"
+
 ```
 
 ## Plan
