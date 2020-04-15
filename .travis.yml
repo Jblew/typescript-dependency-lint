@@ -1,0 +1,23 @@
+dist: xenial
+language: node_js
+node_js:
+  - '8'
+
+branches:
+  except:
+    - /^v[0-9]/
+
+install:
+  - npm ci
+
+script:
+  - npm run build
+
+deploy:
+  - provider: script
+    script: npx semantic-release
+    skip_cleanup: true
+    node_js: 8
+    on:
+      tags: false
+      branch: master
