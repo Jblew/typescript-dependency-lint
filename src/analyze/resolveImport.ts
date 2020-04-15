@@ -5,11 +5,11 @@ import { createMatchPath } from 'tsconfig-paths'
 import { TSConfigBaseStructure } from '../util/TSConfigBaseStructure'
 
 export function resolveImport(params: Params): string | undefined {
-  const resolvedLocal = resolveLocal(params)
-  if (resolvedLocal) return resolvedLocal
-
   const resolvedWithTsconfig = resolveWithTsconfigPaths(params)
   if (resolvedWithTsconfig) return resolvedWithTsconfig
+
+  const resolvedLocal = resolveLocal(params)
+  if (resolvedLocal) return resolvedLocal
 
   if (isLibraryImport(params)) return params.importPath
 
