@@ -11,6 +11,7 @@ $ typescript-dependency-lint
 ```typescript
 interface JsonConfig {
   ignore: string [] // glob pattern array
+  tsconfigPath: string
 }
 ```
 
