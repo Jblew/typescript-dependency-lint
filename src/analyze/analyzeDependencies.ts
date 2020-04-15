@@ -1,3 +1,5 @@
+import * as paths from 'path'
+
 import { Config } from '../Config'
 
 import { getFilesToAnalyze } from './getFilesToAnalyze'
@@ -22,6 +24,10 @@ export async function analyzeDependencies(globPattern: string, config: Config) {
     {} as Record<string, (string | undefined)[]>,
   )
 
+  presentImports(imports)
+}
+
+function presentImports(imports: Record<string, (string | undefined)[]>) {
   // tslint:disable no-console
   console.log(imports)
 }

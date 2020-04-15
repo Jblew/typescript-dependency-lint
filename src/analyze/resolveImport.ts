@@ -26,8 +26,15 @@ interface Params {
 }
 
 function resolveLocal({ importPath, contextPath }: Params): string | undefined {
-  const path = paths.resolve(paths.resolve(importPath, contextPath))
+  const contextDir = paths.dirname(contextPath)
+  const path = paths.resolve(paths.resolve(contextDir, importPath))
+  // tslint:disable no-console
+  console.log({ importPath, contextPath, path })
   if (fs.existsSync(path)) return path
+
+  const pathWithTsExtension = `${path}.ts`
+  if (fs.existsSync(pathWithTsExtension)) return pathWithTsExtension
+
   return undefined
 }
 
@@ -41,6 +48,7 @@ function resolveWithTsconfigPaths({
     tsconfig.compilerOptions.paths,
   )
   const resolvedPath = matcher(importPath)
+  console.log(resolvedPath)
 
   return resolvedPath
 }
