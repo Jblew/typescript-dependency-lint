@@ -12,7 +12,7 @@ $ typescript-dependency-lint
 interface JsonConfig {
   ignore: string [] // glob pattern array
 }
-``
+```
 
 ## Plan
 Now:
