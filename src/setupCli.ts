@@ -1,6 +1,8 @@
 // tslint:disable no-console
 import * as commander from 'commander'
 
+import { parseConfig } from './parseConfig'
+
 // tslint:disable no-var-requires
 const PACKAGE_JSON: {
   version: string
@@ -16,7 +18,10 @@ export function setupCli(program: commander.Command) {
       'Config in escaped JSON format. See README for reference',
     )
 
-  program.command('show [globPattern]').action(async (cmd, options) => {
-    console.log({ cmd, options })
-  })
+  program
+    .command('analyze [globPattern]')
+    .action(async (globPattern, options) => {
+      const config = parseConfig(options.parent.config)
+      await analyzeDependencies(globPattern, config)
+    })
 }

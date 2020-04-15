@@ -10,11 +10,14 @@ const program = new commander.Command()
 ;(async () => {
   try {
     setupCli(program)
-
-    commander.parse(process.argv)
+    if (process.argv.length > 2) {
+      await program.parseAsync(process.argv)
+    } else {
+      program.outputHelp()
+    }
   } catch (error) {
     console.error(error)
-    commander.outputHelp()
+    program.outputHelp()
     process.exit(1)
   }
 })()
