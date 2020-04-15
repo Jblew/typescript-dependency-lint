@@ -28,8 +28,6 @@ interface Params {
 function resolveLocal({ importPath, contextPath }: Params): string | undefined {
   const contextDir = paths.dirname(contextPath)
   const path = paths.resolve(paths.resolve(contextDir, importPath))
-  // tslint:disable no-console
-  console.log({ importPath, contextPath, path })
   if (fs.existsSync(path)) return path
 
   const pathWithTsExtension = `${path}.ts`
@@ -47,10 +45,7 @@ function resolveWithTsconfigPaths({
     tsconfig.absoluteBaseUrl,
     tsconfig.compilerOptions.paths,
   )
-  const resolvedPath = matcher(importPath)
-  console.log(resolvedPath)
-
-  return resolvedPath
+  return matcher(importPath)
 }
 
 function isLibraryImport(_: Params): boolean {

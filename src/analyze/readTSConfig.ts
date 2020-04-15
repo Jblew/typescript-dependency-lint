@@ -18,7 +18,5 @@ export function readTSConfig(tsconfigPath: string): TSConfigBaseStructure {
     ),
   )
 
-  // tslint:disable no-console
-  console.log(tsconfigStruct)
   return tsconfigStruct
 }
