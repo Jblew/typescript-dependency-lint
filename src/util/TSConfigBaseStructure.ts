@@ -1,5 +1,8 @@
 export interface TSConfigBaseStructure {
+  absoluteBaseUrl: string
+
   compilerOptions: {
-    paths: Record<string, string | string[]>
+    baseUrl: string
+    paths: Record<string, string[]>
   }
 }
