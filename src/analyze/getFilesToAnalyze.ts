@@ -8,6 +8,7 @@ export async function getFilesToAnalyze(
 ): Promise<string[]> {
   const globOptions = {
     ignore: config.ignore,
+    matchBase: true,
   }
   return new Promise((resolve, reject) =>
     glob(globPattern, globOptions, (err, matches) => {
