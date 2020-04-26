@@ -1,3 +1,5 @@
+[![typescript-dependency-lint on npm](https://img.shields.io/npm/v/typescript-dependency-lint)](https://www.npmjs.com/package/typescript-dependency-lint)
+
 # typescript-dependency-lint
 
 Dependency linter for typescript. So far it supports graph analysis
