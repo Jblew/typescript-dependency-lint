@@ -65,9 +65,10 @@
     "url": "https://github.com/Jblew/typescript-dependency-lint"
   },
   "keywords": [
-    "firebase",
-    "firebase-functions",
-    "rate-limiter"
+    "typescript",
+    "dependency",
+    "lint",
+    "architecture"
   ],
   "author": "Jędrzej Lewandowski <jedrzejblew@gmail.com> (https://jedrzej.lewandowski.doctor/)",
   "contributors": [
